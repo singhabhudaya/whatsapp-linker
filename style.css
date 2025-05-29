@@ -1,83 +1,127 @@
 body {
-    font-family: sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #e9ebee; /* A light grey, common in apps */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to top for mobile */
+    align-items: flex-start; /* Align to top for mobile view */
     min-height: 100vh;
     box-sizing: border-box;
+    color: #1c1e21; /* Dark grey for text */
 }
 
 .container {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Max width for larger screens, but will be full on mobile */
+    max-width: 420px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 h1 {
-    color: #333;
+    color: #075E54; /* WhatsApp Dark Green */
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-size: 1.6em;
+    font-weight: 600;
 }
 
 p {
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+}
+
+.country-code {
+    padding: 12px 15px;
+    background-color: #f5f6f7;
+    border-right: 1px solid #ccd0d5;
+    font-size: 1.1em;
+    color: #4b4f56;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 #phoneNumber {
-    width: calc(100% - 22px); /* Account for padding/border */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    flex-grow: 1; /* Takes remaining space */
+    padding: 12px 10px;
+    border: none; /* Border is on the group */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     font-size: 1.1em;
-    box-sizing: border-box; /* Important for width calculation */
+    box-sizing: border-box;
+    outline: none; /* Remove default focus outline */
 }
+
+#phoneNumber:focus {
+    /* Optional: Add a subtle focus style if needed, but often handled by browsers */
+    /* box-shadow: 0 0 0 2px rgba(7, 94, 84, 0.3); */
+}
+
 
 #generateLinkBtn {
     background-color: #25D366; /* WhatsApp Green */
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 14px 25px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
+    display: block; /* Make it full width */
     width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
     box-sizing: border-box;
 }
 
-#generateLinkBtn:hover {
-    background-color: #1DAE50;
+#generateLinkBtn:hover,
+#generateLinkBtn:focus {
+    background-color: #1DAE50; /* Darker WhatsApp Green */
+    outline: none;
+}
+
+.result-area {
+    margin-top: 25px;
+    min-height: 40px; /* Reserve space for link or error */
 }
 
 .wa-link {
-    display: inline-block; /* Or block if you want it full width */
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: #007bff;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Bootstrap primary blue, or another distinct color */
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
 }
+
 .wa-link:hover {
     background-color: #0056b3;
 }
 
-#result p { /* For error messages */
-    font-size: 0.9em;
-    margin-top: 10px;
+.error-message {
+    color: #dc3545; /* Bootstrap danger red */
+    font-weight: 500;
+}
+
+.tip {
+    font-size: 0.8em;
+    color: #606770;
+    margin-top: 30px;
 }

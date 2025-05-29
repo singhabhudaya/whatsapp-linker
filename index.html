@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick WA Linker</title>
-    <style>
-        /* We'll add CSS later */
-    </style>
+    <title>Quick Chat WA</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Add a simple favicon -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
     <div class="container">
-        <h1>Quick WhatsApp Linker</h1>
-        <p>Enter 10-digit Indian mobile number:</p>
-        <input type="tel" id="phoneNumber" placeholder="e.g., 9876543210" maxlength="10" inputmode="numeric" autofocus>
-        <button id="generateLinkBtn">Generate Link</button>
-        <div id="result" style="margin-top: 20px;">
-            <!-- Link will appear here -->
+        <h1>Quick WhatsApp Chat</h1>
+        <p>Enter the 10-digit Indian mobile number below to start a chat without saving the contact.</p>
+
+        <div class="input-group">
+            <span class="country-code">+91</span>
+            <input type="tel" id="phoneNumber" placeholder="9876543210" maxlength="10" inputmode="numeric" autofocus>
         </div>
+
+        <button id="generateLinkBtn">Open Chat</button>
+
+        <div id="resultArea" class="result-area">
+            <!-- Link or error message will appear here -->
+        </div>
+
+        <p class="tip">
+            Tip: On your phone, use your browser's "Add to Home Screen" option to use this like an app!
+        </p>
     </div>
 
-    <script>
-        // JS will go here
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
