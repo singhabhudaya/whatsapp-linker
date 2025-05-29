@@ -9,17 +9,23 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     color: #1c1e21; /* Dark grey for text */
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+}
+
+/* Ensure all elements use border-box by default for easier layout */
+*, *::before, *::after {
+    box-sizing: inherit; /* Inherit from body or set to border-box directly */
 }
 
 .container {
     background-color: #ffffff;
-    padding: 25px 30px;
+    padding: 25px 20px; /* Slightly reduce side padding for smaller screens */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 420px;
     text-align: center;
-    box-sizing: border-box;
+    /* box-sizing: border-box;  <- This will be inherited if using the * rule above */
 }
 
 h1 {
@@ -43,6 +49,9 @@ p {
     margin-bottom: 20px;
     border: 1px solid #ccd0d5;
     border-radius: 6px;
+    width: 100%; /* Ensure it takes full width of its container */
+    /* box-sizing: border-box; <- Inherited if using * rule */
+    overflow: hidden; /* Added as a safeguard, might not be needed with other fixes */
 }
 
 .country-code {
@@ -51,26 +60,24 @@ p {
     border-right: 1px solid #ccd0d5;
     font-size: 1.1em;
     color: #4b4f56;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+    /* Removed individual border-radius here as parent .input-group handles it */
 }
 
 #phoneNumber {
     flex-grow: 1; /* Takes remaining space */
     padding: 12px 10px;
     border: none; /* Border is on the group */
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+    /* Removed individual border-radius here as parent .input-group handles it */
     font-size: 1.1em;
-    box-sizing: border-box;
+    /* box-sizing: border-box; <- Inherited */
     outline: none; /* Remove default focus outline */
+    min-width: 0; /* ADDED: Allows input to shrink properly in flex context */
+    width: 1%; /* ADDED: Another trick with flex-grow: 1 to help it calculate width properly */
 }
 
 #phoneNumber:focus {
-    /* Optional: Add a subtle focus style if needed, but often handled by browsers */
-    /* box-shadow: 0 0 0 2px rgba(7, 94, 84, 0.3); */
+    /* Optional: Add a subtle focus style if needed */
 }
-
 
 #generateLinkBtn {
     background-color: #25D366; /* WhatsApp Green */
@@ -86,7 +93,7 @@ p {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    box-sizing: border-box;
+    /* box-sizing: border-box; <- Inherited */
 }
 
 #generateLinkBtn:hover,
@@ -98,12 +105,13 @@ p {
 .result-area {
     margin-top: 25px;
     min-height: 40px; /* Reserve space for link or error */
+    word-break: break-all; /* In case the link itself is very long */
 }
 
 .wa-link {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* Bootstrap primary blue, or another distinct color */
+    background-color: #007bff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -116,7 +124,7 @@ p {
 }
 
 .error-message {
-    color: #dc3545; /* Bootstrap danger red */
+    color: #dc3545;
     font-weight: 500;
 }
 
